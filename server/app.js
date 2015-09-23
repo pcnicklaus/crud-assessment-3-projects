@@ -20,7 +20,7 @@ var api = require('./routes/api/v1.js');
 // *** express instance *** //
 var app = express();
 
-var config = require('./config');
+var config = require('./_config');
 
 // *** mongoose *** ///
 // set up with multiple databases...

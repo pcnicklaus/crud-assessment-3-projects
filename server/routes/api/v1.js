@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-var Exercise = require('../../models/projects');
+var Project = require('../../models/project');
 
-// get all exercise
-router.get('/exercises', function (req, res, next) {
-  Exercise.find(function (err, data) {
+// get all projects
+router.get('/projects', function (req, res, next) {
+  Project.find(function (err, data) {
     if (err) {
       res.json({'error': err});
     } else {
@@ -14,9 +14,9 @@ router.get('/exercises', function (req, res, next) {
   });
 });
 
-// get one exercise
-router.get('/exercise/:id', function (req, res, next) {
-  Exercise.findById(req.paramas.id, function (err, data) {
+// get one project
+router.get('/project/:id', function (req, res, next) {
+  Project.findById(req.params.id, function (err, data) {
     if (err) {
       res.json({'error': err});
     } else {
@@ -26,26 +26,26 @@ router.get('/exercise/:id', function (req, res, next) {
 });
 
 // post one exercise
-router.post('/exercises', function (req, res, next) {
-  var newExercise = new Exercise ({
+router.post('/projects', function (req, res, next) {
+  var newProject = new Project ({
     name: req.body.name,
     description: req.body.description,
     tags: req.body.tags,
     group: req.body.group,
     group_members: req.body.group_members
   });
-  newExercise.save(function (err, data) {
+  newProject.save(function (err, data) {
     if (err) {
       res.json({'error': err});
     } else {
-      res.json({'SAVED': err});
+      res.json({'SAVED': data});
     }
   });
 });
 
 // put / update one exercise
-router.put('/exercise/:id', function (err, res, next) {
-  Exercise.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
+router.put('/project/:id', function (req, res, next) {
+  Project.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
     if (err) {
       res.json({'error': err});
     } else {
@@ -55,8 +55,8 @@ router.put('/exercise/:id', function (err, res, next) {
 });
 
 // delete one exercise
-router.delete('/exercise/:id', function (err, res, next) {
-  Exercise.findByIdAndRemove(req.params.id, function (err, data) {
+router.delete('/project/:id', function (req, res, next) {
+  Project.findByIdAndRemove(req.params.id, function (err, data) {
     if (err) {
       res.json({'error': err});
     } else {
