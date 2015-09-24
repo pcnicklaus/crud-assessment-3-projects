@@ -1,0 +1,29 @@
+<table class="table projecttable">
+  <tr>
+    <td><h3>Details for {{project.name}}</h3></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Project Title</td>
+    <td>{{project.name}}</td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td>{{project.description}}</td>
+  </tr>
+  <tr>
+    <td>Project Tags</td>
+    <td>{{project.tags}}</td>
+  </tr>
+  <tr>
+    <td>Was it a Group Project</td>
+    <td>{{project.group}}</td>
+  </tr>
+  <tr>
+    <td>Who was in your group?</td>
+    <td>{{project.group_members}}</td>
+  </tr>
+</table>
+<div>
+  <a class="btn btn-primary" ui-sref="editProject({id:project._id})">Edit</a>
+</div>

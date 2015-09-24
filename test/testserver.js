@@ -114,6 +114,7 @@ describe('Projects', function () {
           });
       });
   });
+
  it('should delete a SINGLE project on /api/v1/project/<id> DELETE', function(done) {
   chai.request(server)
     .get('/api/v1/projects')
