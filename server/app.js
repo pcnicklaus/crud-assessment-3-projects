@@ -5,14 +5,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var swig = require('swig');
+// var swig = require('swig');
 
 //i added
 var http = require('http');
 var mongoose = require('mongoose');
 
 // *** routes *** //
-var routes = require('./routes/index.js');
+// var routes = require('./routes/index.js');
 // i added
 var api = require('./routes/api/v1.js');
 
@@ -34,9 +34,9 @@ mongoose.connect(config.mongoURI[app.settings.env], function(err, res) {
 });
 
 // *** view engine *** //
-var swig = new swig.Swig();
-app.engine('html', swig.renderFile);
-app.set('view engine', 'html');
+// var swig = new swig.Swig();
+// app.engine('html', swig.renderFile);
+// app.set('view engine', 'html');
 
 
 
@@ -53,8 +53,12 @@ app.use(express.static(path.join(__dirname, '../client/public')));
 
 
 // *** main routes *** //
-app.use('/', routes);
+// app.use('/', routes);
 app.use('/api/v1', api);
+
+app.use('/', function (req, res) {
+  res.sendFile(path.join(__dirname, '../client/public/partials', 'index.html'));
+});
 
 
 // catch 404 and forward to error handler
